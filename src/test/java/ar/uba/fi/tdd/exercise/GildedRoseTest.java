@@ -19,4 +19,14 @@ class GildedRoseTest {
 		assertThat(item.quality).isEqualTo(2);
 	}
 
+	@Test
+	public void test01SulfurasDoesNotDegrade(){
+		Item item = new Item("Sulfuras",10,80);
+		Sulfuras sulfuras = new Sulfuras(item);
+		sulfuras.updateQuality();
+		sulfuras.updateSellIn();
+		assertThat(item.quality).isEqualTo(80);
+		assertThat(item.sellIn).isEqualTo(10);
+	}
+
 }
