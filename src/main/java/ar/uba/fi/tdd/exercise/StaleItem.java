@@ -1,17 +1,27 @@
 package ar.uba.fi.tdd.exercise;
 
 public class StaleItem implements Qualifiable {
-    public StaleItem(){
+    private static final int DEGRADATION_RATE = 2;
+    private static final int MAX_QUALITY = 50;
 
+    private static final int SELL_IN_DATE = 0;
+    protected Item item;
+
+    public StaleItem(Item item){
+        this.item = item;
     }
 
     @Override
     public void updateQuality() {
-
+        if (this.item.quality < MAX_QUALITY){
+            this.item.quality++;
+        }
     }
 
     @Override
     public void updateSellIn() {
-
+        if (this.item.sellIn > SELL_IN_DATE){
+            this.item.sellIn--;
+        }
     }
 }
