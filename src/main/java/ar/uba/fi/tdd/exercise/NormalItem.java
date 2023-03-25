@@ -14,17 +14,12 @@ public abstract class NormalItem implements Qualifable,Sellable{
 
     @Override
     public void updateQuality() {
-        subtractQualityByOne();
+        this.item.quality--;
         if (this.item.sellIn < SELL_IN_DATE){
-            subtractQualityByOne();
-        }
-    }
-
-    private void subtractQualityByOne(){
-        if(this.item.quality > MIN_QUALITY){
             this.item.quality--;
         }
     }
+
     @Override
     public void updateSellIn() {
         this.item.sellIn--;

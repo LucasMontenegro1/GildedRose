@@ -7,7 +7,7 @@ public abstract class LegendaryItem implements Qualifable,Sellable{
     public LegendaryItem(Item item){
         this.item = item;
     }
-    //Doesn´t do anything since is a legendary item
+    //Doesn't do anything since is a legendary item
     @Override
     public void updateQuality() {}
 
