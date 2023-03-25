@@ -37,7 +37,6 @@ class GildedRoseTest {
 		brie.updateSellIn();
 		assertThat(item.sellIn).isEqualTo(19);
 		assertThat(item.quality).isEqualTo(21);
-
 	}
 
 }
