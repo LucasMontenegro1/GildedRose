@@ -1,6 +1,6 @@
 package ar.uba.fi.tdd.exercise;
 
-public class StaleItem implements Qualifable{
+public class StaleItem implements Qualifiable {
     public StaleItem(){
 
     }

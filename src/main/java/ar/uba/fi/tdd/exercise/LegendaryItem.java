@@ -1,6 +1,6 @@
 package ar.uba.fi.tdd.exercise;
 
-public abstract class LegendaryItem implements Qualifable{
+public abstract class LegendaryItem implements Qualifiable {
     protected Item item;
     private static final int MAX_QUALITY = 80;
 
