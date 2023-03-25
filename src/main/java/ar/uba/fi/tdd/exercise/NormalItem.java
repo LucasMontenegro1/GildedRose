@@ -1,6 +1,6 @@
 package ar.uba.fi.tdd.exercise;
 
-public abstract class NormalItem implements Qualifable,Sellable{
+public abstract class NormalItem implements Qualifable{
     protected Item item;
     private static final int MIN_QUALITY = 0;
     private static final int MAX_QUALITY = 50;
