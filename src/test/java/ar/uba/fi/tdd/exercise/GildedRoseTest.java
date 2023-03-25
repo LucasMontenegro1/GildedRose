@@ -29,4 +29,15 @@ class GildedRoseTest {
 		assertThat(item.sellIn).isEqualTo(10);
 	}
 
+	@Test
+	public void test02AgedBrieHasMoreQuality(){
+		Item item = new Item("Aged Brie", 20,20);
+		AgedBrie brie = new AgedBrie(item);
+		brie.updateQuality();
+		brie.updateSellIn();
+		assertThat(item.sellIn).isEqualTo(19);
+		assertThat(item.quality).isEqualTo(21);
+
+	}
+
 }
