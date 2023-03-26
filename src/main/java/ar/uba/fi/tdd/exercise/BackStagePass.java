@@ -16,7 +16,7 @@ public class BackStagePass extends StaleItem{
 
     @Override
     public void updateQuality() {
-        if (item.quality <= SELL_IN_DATE){
+        if (item.sellIn <= SELL_IN_DATE){
             item.quality = MIN_QUALITY;
         } else{
             this.upgradeQuality();
