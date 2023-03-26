@@ -17,7 +17,7 @@ public class ItemMaker {
             case CONJURED_ITEM:
                 return new ConjuredItem(item);
             default:
-                throw new IllegalArgumentException("No such item");
+                return new NormalItem(item);
         }
     }
 

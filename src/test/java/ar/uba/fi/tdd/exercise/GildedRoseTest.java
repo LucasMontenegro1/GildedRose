@@ -70,18 +70,12 @@ class GildedRoseTest {
 	}
 
 	@Test
-	public void makerCreatesNonexistentItem(){
-		Item item = new Item("default", 1,20);
-		ItemMaker maker = new ItemMaker();
-		Assertions.assertThrows(IllegalArgumentException.class,()->maker.makeItem(item));
-	}
-
-	@Test
 	public void makerCreatesAnAgedBrieCorrectly(){
 		Item item = new Item("Aged Brie", 1,20);
 		ItemMaker maker = new ItemMaker();
 		Qualifiable brie = maker.makeItem(item);
 		Assertions.assertTrue(brie instanceof AgedBrie);
 	}
+
 
 }
