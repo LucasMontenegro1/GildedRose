@@ -2,7 +2,6 @@ package ar.uba.fi.tdd.exercise;
 
 public class StaleItem implements Qualifiable {
     private static final int MAX_QUALITY = 50;
-
     private static final int SELL_IN_DATE = 0;
     protected Item item;
 

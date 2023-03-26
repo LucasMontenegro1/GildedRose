@@ -33,10 +33,19 @@ class GildedRoseTest {
 	public void test02AgedBrieHasMoreQuality(){
 		Item item = new Item("Aged Brie", 20,20);
 		AgedBrie brie = new AgedBrie(item);
-		brie.updateQuality();
 		brie.updateSellIn();
+		brie.updateQuality();
 		assertThat(item.sellIn).isEqualTo(19);
 		assertThat(item.quality).isEqualTo(21);
+	}
+
+	@Test
+	public void test03BackStagePassOfTenDays(){
+		Item item = new Item("Backstage Pass", 10,20);
+		BackStagePass back = new BackStagePass(item);
+		back.updateSellIn();
+		back.updateQuality();
+		assertThat(item.quality).isEqualTo(22);
 	}
 
 }
