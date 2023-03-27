@@ -19,9 +19,9 @@ class GildedRose {
             } catch (Exception e){
                 System.out.println(e);
             }
-
         }
     }
+
 
 
 

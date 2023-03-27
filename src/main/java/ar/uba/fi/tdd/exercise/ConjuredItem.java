@@ -2,15 +2,17 @@ package ar.uba.fi.tdd.exercise;
 
 public class ConjuredItem implements Qualifiable{
     Item item;
-
     private static final int DEGRADE_RATE = 2;
     private static final int SELL_IN_DATE = 0;
     private static final int MIN_QUALITY = 0;
 
+    private static final int MAX_QUALITY = 50;
 
     public ConjuredItem(Item item){
+        if (item.quality > MAX_QUALITY) {
+            throw new IllegalArgumentException("Quality cannot be greater than " + MAX_QUALITY);
+        }
         this.item = item;
-
     }
 
     @Override
@@ -32,6 +34,6 @@ public class ConjuredItem implements Qualifiable{
 
     @Override
     public void updateSellIn() {
-
+        this.item.sellIn--;
     }
 }

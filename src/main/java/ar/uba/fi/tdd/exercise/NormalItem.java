@@ -6,9 +6,10 @@ public class NormalItem implements Qualifiable {
     private static final int MAX_QUALITY = 50;
     private static final int SELL_IN_DATE = 0;
 
-
-
     public NormalItem(Item item){
+        if (item.quality > MAX_QUALITY) {
+            throw new IllegalArgumentException("Quality cannot be greater than " + MAX_QUALITY);
+        }
         this.item = item;
     }
 

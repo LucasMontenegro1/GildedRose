@@ -6,6 +6,9 @@ public class StaleItem implements Qualifiable {
     protected Item item;
 
     public StaleItem(Item item){
+        if (item.quality > MAX_QUALITY) {
+            throw new IllegalArgumentException("Quality cannot be greater than " + MAX_QUALITY);
+        }
         this.item = item;
     }
 

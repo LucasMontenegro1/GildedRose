@@ -77,5 +77,24 @@ class GildedRoseTest {
 		Assertions.assertTrue(brie instanceof AgedBrie);
 	}
 
+	@Test
+	public void agedBrieUpgradesCorrectlyTillMax(){
+		Item item = new Item("Aged Brie", 2,50);
+		ItemMaker maker = new ItemMaker();
+		Qualifiable brie = maker.makeItem(item);
+		brie.updateSellIn();
+		brie.updateQuality();
+		assertThat(item.quality).isEqualTo(50);
+	}
+
+	@Test
+	public void normalItemCantGetLessThanZero(){
+		Item item = new Item("Normal Item", 2,0);
+		ItemMaker maker = new ItemMaker();
+		Qualifiable brie = maker.makeItem(item);
+		brie.updateSellIn();
+		brie.updateQuality();
+		assertThat(item.quality).isEqualTo(0);
+	}
 
 }
