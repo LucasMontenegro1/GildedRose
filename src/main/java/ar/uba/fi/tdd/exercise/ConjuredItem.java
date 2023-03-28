@@ -25,7 +25,7 @@ public class ConjuredItem implements Qualifiable{
 
     private void degradeQuality(){
         int discount = 0;
-        while(discount <= DEGRADE_RATE || this.item.quality > MIN_QUALITY){
+        while(discount < DEGRADE_RATE && this.item.quality > MIN_QUALITY){
             this.item.quality--;
             discount++;
         }
