@@ -30,6 +30,18 @@ class GildedRoseTest {
 	}
 
 	@Test
+	public void legendaryItemsQualityShouldBe80(){
+		Item item = new Item("Sulfuras, Hand of Ragnaros",10,79);
+		Assertions.assertThrows(IllegalArgumentException.class, ()-> new Sulfuras(item));
+	}
+
+	@Test
+	public void cantCreateNormalItemWithQualityOver50(){
+		Item item = new Item("Unknown", 2,51);
+		Assertions.assertThrows(IllegalArgumentException.class, ()-> new NormalItem(item));
+	}
+
+	@Test
 	public void normalItemDegradesCorrectlyWhenSellInGreaterThanZero(){
 		Item item = new Item("Unknown",2,2);
 		Qualifiable normal = new NormalItem(item);
@@ -54,12 +66,6 @@ class GildedRoseTest {
 		normal.updateSellIn();
 		normal.updateQuality();
 		assertThat(item.quality).isEqualTo(0);
-	}
-
-	@Test
-	public void cantCreateNormalItemWithQualityOver50(){
-		Item item = new Item("Unknown", 2,51);
-		Assertions.assertThrows(IllegalArgumentException.class, ()-> new NormalItem(item));
 	}
 
 	@Test
@@ -118,7 +124,6 @@ class GildedRoseTest {
 		sulfuras.updateSellIn();
 		assertThat(item.sellIn).isEqualTo(10);
 	}
-
 	@Test
 	public void backStagePassOfTenDays(){
 		Item item = new Item("Backstage Pass", 10,20);
@@ -155,6 +160,38 @@ class GildedRoseTest {
 	}
 
 	@Test
+	public void makerCreatesSulfurasCorrectly(){
+		Item item = new Item("Sulfuras, Hand of Ragnaros", 1,80);
+		ItemMaker maker = new ItemMaker();
+		Qualifiable sulf = maker.makeItem(item);
+		Assertions.assertTrue(sulf instanceof Sulfuras);
+	}
+
+	@Test
+	public void makerCreatesBackStagePassCorrectly(){
+		Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 1,20);
+		ItemMaker maker = new ItemMaker();
+		Qualifiable back = maker.makeItem(item);
+		Assertions.assertTrue(back instanceof BackStagePass);
+	}
+
+	@Test
+	public void makerCreatesConjuredManaCakeCorrectly(){
+		Item item = new Item("Conjured Mana Cake", 1,20);
+		ItemMaker maker = new ItemMaker();
+		Qualifiable conj = maker.makeItem(item);
+		Assertions.assertTrue(conj instanceof ConjuredItem);
+	}
+
+	@Test
+	public void makerCreatesANormalItemCorrectly(){
+		Item item = new Item("name", 1,20);
+		ItemMaker maker = new ItemMaker();
+		Qualifiable normal = maker.makeItem(item);
+		Assertions.assertTrue(normal instanceof NormalItem);
+	}
+
+	@Test
 	public void conjuredItemDegradesTwiceAsFastNormally(){
 		Item item = new Item("Conjured Mana Cake", 2,20);
 		ItemMaker maker = new ItemMaker();
@@ -174,10 +211,5 @@ class GildedRoseTest {
 		assertThat(item.quality).isEqualTo(16);
 	}
 
-	@Test
-	public void legendaryItemsQualityShouldBe80(){
-		Item item = new Item("Sulfuras, Hand of Ragnaros",10,79);
-		Assertions.assertThrows(IllegalArgumentException.class, ()-> new Sulfuras(item));
-	}
 
 }
