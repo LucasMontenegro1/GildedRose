@@ -14,6 +14,13 @@ public class StaleItem implements Qualifiable {
 
     @Override
     public void updateQuality() {
+        this.upgradeQuality();
+        if (item.sellIn < SELL_IN_DATE){
+            this.upgradeQuality();
+        }
+    }
+
+    private void upgradeQuality(){
         if (this.item.quality < MAX_QUALITY){
             this.item.quality++;
         }
@@ -21,8 +28,6 @@ public class StaleItem implements Qualifiable {
 
     @Override
     public void updateSellIn() {
-        if (this.item.sellIn > SELL_IN_DATE){
-            this.item.sellIn--;
-        }
+        this.item.sellIn--;
     }
 }

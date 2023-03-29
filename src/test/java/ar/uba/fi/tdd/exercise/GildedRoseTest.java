@@ -85,6 +85,17 @@ class GildedRoseTest {
 	}
 
 	@Test
+	public void agedBrieUpgradesCorrectlyAfterSellIn(){
+		Item item = new Item("Aged Brie", 0,20);
+		ItemMaker maker = new ItemMaker();
+		Qualifiable brie = maker.makeItem(item);
+		brie.updateSellIn();
+		brie.updateQuality();
+		assertThat(item.quality).isEqualTo(22);
+	}
+
+
+	@Test
 	public void sulfurasDoesNotDegrade(){
 		Item item = new Item("Sulfuras",10,80);
 		Sulfuras sulfuras = new Sulfuras(item);
