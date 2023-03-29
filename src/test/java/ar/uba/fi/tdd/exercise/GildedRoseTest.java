@@ -24,6 +24,12 @@ class GildedRoseTest {
 	}
 
 	@Test
+	public void qualityCantBeLowerThanZero(){
+		Item item = new Item("Sulfuras, Hand of Ragnaros",10,-1);
+		Assertions.assertThrows(IllegalArgumentException.class, ()-> new Sulfuras(item));
+	}
+
+	@Test
 	public void normalItemDegradesCorrectlyWhenSellInGreaterThanZero(){
 		Item item = new Item("Unknown",2,2);
 		Qualifiable normal = new NormalItem(item);
