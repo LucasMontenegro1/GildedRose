@@ -152,6 +152,14 @@ class GildedRoseTest {
 	}
 
 	@Test
+	public void backStageOverTen(){
+		Item item = new Item("Backstage Pass", 12,20);
+		BackStagePass back = new BackStagePass(item);
+		back.updateSellIn();
+		back.updateQuality();
+		assertThat(item.quality).isEqualTo(21);
+	}
+	@Test
 	public void makerCreatesAnAgedBrieCorrectly(){
 		Item item = new Item("Aged Brie", 1,20);
 		ItemMaker maker = new ItemMaker();
