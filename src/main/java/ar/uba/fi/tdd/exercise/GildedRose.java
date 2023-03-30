@@ -14,8 +14,8 @@ class GildedRose {
         for (Item i : items ){
             try {
                 Qualifiable item = maker.makeItem(i);
-                item.updateSellIn();
                 item.updateQuality();
+                item.updateSellIn();
             } catch (Exception e){
                 System.out.println(e);
             }
